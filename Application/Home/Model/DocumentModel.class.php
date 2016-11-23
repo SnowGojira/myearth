@@ -55,9 +55,23 @@ class DocumentModel extends Model{
 	 * @param  string   $field    字段 true-所有字段
 	 * @return array              文档列表
 	 */
-	public function lists($category, $order = '`id` DESC', $status = 1, $field = true){
+	public function lists($category, $order = '`id` DESC', $limit=null, $status = 1, $field = true){
 		$map = $this->listMap($category, $status);
-		return $this->field($field)->where($map)->order($order)->select();
+
+        if (empty($limit))
+		    $ret = $this->field($field)->where($map)->order($order)->select();
+        else
+            $ret = $this->field($field)->where($map)->order($order)->limit($limit)->select();
+
+        if ($field === true || strpos($field, 'cover_id'))
+        {
+            foreach ($ret as $k => $v)
+            {
+                $ret[$k]['cover_path'] = get_cover($v['cover_id'], 'path');
+            }
+        }
+
+        return $ret;
 	}
 
 	/**

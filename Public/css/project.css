@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.wrap{background-color:#f6f6f6}
+.main{overflow:visible;width:1238px;margin:0 auto;padding:80px 0 200px 0}
+.m-special,.m-bgProm,.m-studProj{margin-top:74px}
+.m-title:before{content:'';float:left;width:33px;height:33px;background:url(../images/project-titleIcon.png)}
+.m-t-zh{display:inline-block;margin:0 0 0 7px;font-size:24px;color:#1e3124}
+.m-t-en{margin:0 0 0 40px;font-family:'Arial Narrow', sans-serif;font-size:14px;color:#959494;line-height:20px}
+.m-cont{list-style:none;width:1280px;margin:0 0 0 -40px;padding:0}
+.m-c-row{float:left;width:280px;height:330px;margin:40px 0 40px 40px;background-color:#FFF;transition:box-shadow .3s}
+.m-c-row:hover{box-shadow:-2px 2px 16px 0 #979797}
+.m-c-row:hover .m-c-r-wrap{background-color:#EBEBEB}
+.m-c-r-img{display:block;width:100%;height:240px}
+.m-c-r-wrap{overflow:hidden;box-sizing:border-box;width:100%;height:90px;padding:0 15px;transition:background .3s}
+.m-c-r-tit{overflow:hidden;margin:10px 0 0 0;font-size:18px;color:#1e3124}
+.m-c-r-info{height:32px;font-size:12px;color:#585757}
+.m-c-btn{display:block;width:175px;height:50px;margin:0 auto;font-size:20px;line-height:50px;text-align:center;text-decoration:none;color:#1e3124;box-shadow:-1px 1px 5px 0 #AAA;background-color:#eee}
+.m-c-btn:hover{color:#FFF;background-color:#1e3124}
+.m-bgProm .m-title:before{background-position:0 -33px}
+.m-studProj .m-title:before{background-position:0 -66px}
+.m-special .m-title:before{background-position:0 0px}
+.m-page{width:100%}
+.m-title2:before{content:'';float:left;width:33px;height:33px;background:url(../images/project-titleIcon.png)}

@@ -66,25 +66,36 @@ class ArticleController extends HomeController {
 
 		/* 分类信息 */
 		$category = $this->category($info['category_id']);
-
-		/* 获取模板 */
-		if(!empty($info['template'])){//已定制模板
-			$tmpl = $info['template'];
-		} elseif (!empty($category['template_detail'])){ //分类已定制模板
-			$tmpl = $category['template_detail'];
-		} else { //使用默认模板
-			$tmpl = 'Article/'. get_document_model($info['model_id'],'name') .'/detail';
-		}
-
 		/* 更新浏览数 */
 		$map = array('id' => $id);
 		$Document->where($map)->setInc('view');
 
-		/* 模板赋值并渲染模板 */
-		$this->assign('category', $category);
-		$this->assign('info', $info);
-		$this->assign('page', $p); //页码
-		$this->display($tmpl);
+		if (empty($info['isStatic']))
+        {//非静态页面
+
+            /* 获取模板 */
+            if(!empty($info['template'])){//已定制模板
+                $tmpl = $info['template'];
+            } elseif (!empty($category['template_detail'])){ //分类已定制模板
+                $tmpl = $category['template_detail'];
+            } else { //使用默认模板
+                $tmpl = 'Article/'. get_document_model($info['model_id'],'name') .'/detail';
+            }
+
+            /* 模板赋值并渲染模板 */
+            $this->assign('category', $category);
+            $this->assign('info', $info);
+            $this->assign('page', $p); //页码
+            $this->display($tmpl);
+
+        }
+        else
+        {//静态页面
+
+            $tpl_name = C('__S_PAGE__') . '/' . $info['staticName'];
+            $this->display($tpl_name);
+
+        }
 	}
 
 	/* 文档分类检测 */

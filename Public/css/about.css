@@ -1,0 +1,58 @@
+@charset "UTF-8";
+.main{background-color:#f6f6f6}
+.m-t-en{background:url(../images/about-title.png) no-repeat center 0}
+.m-introduction{box-sizing:border-box;height:726px;padding-top:155px}
+.m-i-cont{width:1200px;margin:95px auto 0 auto;font-size:18px;line-height:28px;color:#1e3124}
+.m-timeLine{box-sizing:border-box;height:522px;padding-top:90px;background:url(../images/about-timeline.png) no-repeat center}
+.m-timeLine .m-t-en{background-position:center -21px}
+.m-t-cont{margin:210px 0 0 0;list-style:none;text-align:center}
+.m-t-c-row{display:inline-block;width:195px;height:24px;margin-left:10px;position:relative}
+.m-t-c-last{width:25px;}
+.m-t-c-last .m-t-c-line{display:none}
+.m-t-c-row.select .m-t-c-dot{top:1px;left:-5px;width:23px;height:23px;background-position:0 -117px}
+.m-t-c-line{position:absolute;top:11px;left:30px;width:164px;border-bottom:2px solid #4f4f4f}
+.m-t-c-dot{position:absolute;left:0px;top:6px;width:12px;height:12px;font-size:80px;font-style:normal;cursor:default;background:url(../images/about-icon.png) no-repeat 0 -140px}
+.m-t-c-date{position:absolute;top:55px;left:-25px;font-size:32px;font-weight:bold;color:#404040;cursor:default}
+.m-t-c-ft{display:none;overflow:hidden;position:absolute;bottom:40px;left:-86px;box-sizing:border-box;width:366px;height:117px;padding:20px;font-size:12px;line-height:18px;text-align:left;color:#3b3b3b;background:url(../images/about-icon.png)}
+.m-recruit{padding:250px 0 150px 0}
+.m-recruit .m-t-en{background-position:center -42px}
+.m-r-cont{width:850px;margin:20px auto 0 auto;list-style:none}
+.m-r-c-row{margin-top:75px}
+.m-r-c-tit{padding-left:25px;font-size:22px;color:#1e3124}
+.m-r-c-box{padding:25px;background-color:#eaeaeb}
+.m-r-c-b-tit{margin-bottom:20px;font-size:16px;font-weight:bold;color:#323232}
+.m-r-c-b-list{margin:0;font-size:15px;line-height:20px;color:#868585}
+
+.container{
+    margin-top: 20px;
+ display:-webkit-box;
+display:-moz-box;
+    text-align: center;
+    font-size: 18px;
+}
+div:not(.container){
+ -webkit-border-radius:5px;
+ -moz-border-radius:5px;
+border-radius:5px;
+/*background:#999;
+border:#00C 2px solid;*/
+}
+
+ #left,#right{
+ width:380px;
+          -webkit-box-sizing:border-box;
+         -moz-box-sizing:border-box;
+         padding:20px;
+ }
+#middle{
+                 padding:20px;
+               -webkit-box-flex:1;
+                -moz-box-flex:1;
+               -webkit-box-ordinal-group:2;
+              -moz-box-ordinal-group:2;
+             margin:0 5px;
+             }
+#right{
+               -webkit-box-ordinal-group:2;
+                -moz-box-ordinal-group:2;
+            }

@@ -22,8 +22,10 @@
 <div class="tab-wrap">
 	<ul class="tab-nav nav">
 		<volist name=":parse_config_attr($model['field_group'])" id="group">
-			<li data-tab="tab{$key}" <eq name="key" value="1">class="current"</eq>><a href="javascript:void(0);">{$group}</a></li>
-		</volist>
+			<neq name="group" value="扩展">
+			    <li data-tab="tab{$key}" <eq name="key" value="1">class="current"</eq>><a href="javascript:void(0);">{$group}</a></li>
+		    </neq>
+        </volist>
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->

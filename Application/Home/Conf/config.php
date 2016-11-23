@@ -64,6 +64,8 @@ return array(
         '__JS__'     => __ROOT__ . '/Public/' . MODULE_NAME . '/js',
     ),
 
+    '__S_PAGE__' => APP_PATH . '/Home/View/default/Static',
+
     /* SESSION 和 COOKIE 配置 */
     'SESSION_PREFIX' => 'onethink_home', //session前缀
     'COOKIE_PREFIX'  => 'onethink_home_', // Cookie前缀 避免冲突
@@ -95,4 +97,8 @@ return array(
         'callback' => false, //检测文件是否存在回调函数，如果存在返回文件信息数组
     ), //附件上传配置（文件上传类配置）
 
+    'PROJ_INTRO' => 'proj_introduction',
+    'SPECIAL_NAME' => 'specials',
+    'BOOST_NAME' => 'bg_boost',
+    'TOUR_NAME' => 'tour_study',
 );

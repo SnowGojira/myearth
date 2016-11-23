@@ -17,16 +17,46 @@ use OT\DataDictionary;
 class IndexController extends HomeController {
 
 	//系统首页
-    public function index(){
+    public function index()
+    {
+        $special = [];
+        $boost = [];
+        $tour = [];
 
-        $category = D('Category')->getTree();
-        $lists    = D('Document')->lists(null);
+        //轮播
+        $slide_info = D('Admin/Slide')->getSlideShowInfo();
 
-        $this->assign('category',$category);//栏目
-        $this->assign('lists',$lists);//列表
+        //项目介绍
+        $proj_id = M('Category')->where(['name' => C('PROJ_INTRO')])->field('id')->find()['id'];
+        $category = D('Category')->getTree($proj_id);
+        foreach ($category["_"] as $cate)
+        {
+            switch ($cate['name'])
+            {
+                case C('SPECIAL_NAME'):
+                    $special = D('Document')->lists($cate['id'], "`level` desc", 2);
+                    break;
+                case C('BOOST_NAME'):
+                    $boost = D('Document')->lists($cate['id'], "`level` desc", 2);
+                    break;
+                case C('TOUR_NAME'):
+                    foreach ($cate['_'] as $c)
+                    {
+                        $tour[] = D('Document')->lists($c['id'], "`level` desc", 1)[0];
+                    }
+                    break;
+            }
+        }
+var_dump($special);
+        $this->assign('slide',$slide_info);//轮播
+        $this->assign('special',$special);//轮播
+        $this->assign('boost',$boost);//轮播
+        $this->assign('tour',$tour);//轮播
+        //$this->assign('category',$category);//栏目
+        //$this->assign('lists',$lists);//列表
         $this->assign('page',D('Document')->page);//分页
 
-                 
+
         $this->display();
     }
 
