@@ -68,6 +68,7 @@ class DocumentModel extends Model{
             foreach ($ret as $k => $v)
             {
                 $ret[$k]['cover_path'] = get_cover($v['cover_id'], 'path');
+                $ret[$k]['cid'] = $category;
             }
         }
 

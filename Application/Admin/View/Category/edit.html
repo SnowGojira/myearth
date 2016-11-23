@@ -75,6 +75,14 @@
 							</volist>
 						</div>
 					</div>
+					<div class="form-item">
+						<label class="item-label">描述</label>
+						<div class="controls">
+							<label class="textarea input-large">
+								<textarea name="description">{$info.description|default=''}</textarea>
+							</label>
+						</div>
+					</div>
 					<div class="controls">
 						<label class="item-label">分类图标</label>
 						<input type="file" id="upload_picture">
@@ -185,14 +193,6 @@
 						<div class="controls">
 							<label class="textarea input-large">
 								<textarea name="keywords">{$info.keywords|default=''}</textarea>
-							</label>
-						</div>
-					</div>
-					<div class="form-item">
-						<label class="item-label">描述</label>
-						<div class="controls">
-							<label class="textarea input-large">
-								<textarea name="description">{$info.description|default=''}</textarea>
 							</label>
 						</div>
 					</div>

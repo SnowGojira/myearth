@@ -21,8 +21,8 @@
             <a class="h-log" href=""></a>
             <nav class="h-nav">
                 <a class="h-b-a" href="{:U('Index/index')}">首页</a>
-                <a class="h-b-a" href="{:U('')}">项目介绍</a>
-                <a class="h-b-a" href="../Static/consulting.html">达人资讯</a>
+                <a class="h-b-a" href="{:U('Article/projLevelOne')}">项目介绍</a>
+                <a class="h-b-a" href="{:U('Article/listConsult')}">达人资讯</a>
                 <a class="h-b-a" href="../Static/community.html">迈尔斯社群</a>
                 <a class="h-b-a" href="../Static/about.html">关于我们</a>
                 <a class="h-b-a" href="../Static/contact.html">联系我们</a>
@@ -157,7 +157,7 @@
                             <!--</div>-->
                         <!--</li>-->
                     </ul>
-                    <a class="m-p-btn m-btn" href="../Static/project.html#m-studProj"></a>
+                    <a class="m-p-btn m-btn" href="../Article/project.html#m-studProj"></a>
                 </div>
 
                 <div class="m-p-chara">
@@ -194,7 +194,7 @@
                             <!--</div>-->
                         <!--</li>-->
                     </ul>
-                    <a class="m-p-btn m-btn" href="../Static/project.html#m-special"></a>
+                    <a class="m-p-btn m-btn" href="../Article/project.html#m-special"></a>
                 </div>
 
                 <div class="m-p-bg">
@@ -227,7 +227,7 @@
                             <!--</div>-->
                         <!--</li>-->
                     </ul>
-                    <a class="m-p-btn m-btn" href="../Static/project.html#m-bgProm"></a>
+                    <a class="m-p-btn m-btn" href="../Article/project.html#m-bgProm"></a>
                 </div>
             </div>
         </article>
@@ -325,57 +325,89 @@
             <h1 class="m-t-zh">达人资讯</h1>
         </hgroup>
         <div id="news" class="m-n-cont">
-            <a class="m-n-row" href="../Static/consulting-detailed11.html">
-                <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic11.jpg"></div>
+            <for start="0" end="10" name="cir">
+                <switch name="cir">
+                    <case value="0|1|4|5|6|9" break="1">
+                        <a class="m-n-row" href="{:U('Article/detail', 'id='.$conselling[$cir]['id'])}">
+                            <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="{$conselling[$cir]['cover_path']}"></div>
+                            <p class="m-n-tit">{$conselling[$cir]['title']}</p>
+                        </a>
+                    </case>
+                    <case value="2|8" break="1">
+                        <a class="m-n-row" href="{:U('Article/detail', 'id='.$conselling[$cir]['id'])}">
+                            <div class="m-n-r-img"><img style="height:auto;width:100%;position: absolute;left:0px;" src="{$conselling[$cir]['cover_path']}"></div>
+                            <p class="m-n-tit">{$conselling[$cir]['title']}</p>
+                        </a>
+                    </case>
+                    <case value="7" break="1">
+                        <a class="m-n-row" href="{:U('Article/detail', 'id='.$conselling[$cir]['id'])}">
+                            <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-20px;" src="{$conselling[$cir]['cover_path']}"></div>
+                            <p class="m-n-tit">{$conselling[$cir]['title']}</p>
+                        </a>
+                    </case>
+                    <case value="3" break="1">
+                        <a class="m-n-row" href="{:U('Article/detail', 'id='.$conselling[$cir]['id'])}">
+                            <div class="m-n-r-img" style="background: url({$conselling[$cir]['cover_path']});"></div><!--<img  src="images/text/pic4.jpg" alt="">-->
+                            <p class="m-n-tit">{$conselling[$cir]['title']}</p>
+                        </a>
+                    </case>
+                </switch>
+            </for>
+            <!--<volist name="conselling" id="con">-->
+                <!--<a class="m-n-row" href="{:U('Article/detail', 'id='.$con['id'])}">-->
+                    <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="{$con['cover_path']}"></div>-->
+                    <!--<p class="m-n-tit">{$con['title']}</p>-->
+            <!--</a>-->
+            <!--</volist>-->
+            <!--<a class="m-n-row" href="{:U('Article/detail', 'id='.$conselling[0]['id'])}">-->
+                <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="{$conselling[0]['cover_path']}"></div>-->
 
-                <p class="m-n-tit">寻英记：玩味英式风情</p>
-            </a>
-            <a class="m-n-row" href="../Static/consulting-detailed9.html">
-                <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic9.jpg"></div>
-                <!--<img class="m-n-r-img" src="images/text-index-news2.png" alt="">-->
-                <p class="m-n-tit">游学日记</p>
-            </a>
-            <a class="m-n-row" href="../Static/consulting-detailed7.html">
-                <div class="m-n-r-img"><img style="height: auto;width:100%;position: absolute;left:0px;" src="__PUBLIC__/images/text/pic7.jpg"></div>
-                <!--<img class="m-n-r-img" src="images/text-index-news3.png" alt="">-->
-                <p class="m-n-tit">朋友在澳洲，“朋友在中国”</p>
-            </a>
-            <a class="m-n-row" href="../Static/consulting-detailed4.html">
-                <div class="m-n-r-img" style="background: url(__PUBLIC__/images/text/pic4.jpg);"></div><!--<img  src="images/text/pic4.jpg" alt="">-->
-                <p class="m-n-tit">时间证明能力，能力基于实践</p>
-            </a>
-            <a class="m-n-row" href="../Static/consulting-detailed10.html">
-                <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic10.jpg"></div>
-                <!--<img class="m-n-r-img" src="images/text-index-news6.png" alt="">-->
-                <p class="m-n-tit">来，我们做个交换</p>
-            </a>
-            <a class="m-n-row" href="../Static/consulting-detailed1.html">
-                <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic1.jpg"></div>
+                <!--<p class="m-n-tit">{$conselling[0]['title']}</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed9.html">-->
+                <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic9.jpg"></div>-->
+                <!--&lt;!&ndash;<img class="m-n-r-img" src="images/text-index-news2.png" alt="">&ndash;&gt;-->
+                <!--<p class="m-n-tit">游学日记</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed7.html">-->
+                <!--<div class="m-n-r-img"><img style="height: auto;width:100%;position: absolute;left:0px;" src="__PUBLIC__/images/text/pic7.jpg"></div>-->
+                <!--&lt;!&ndash;<img class="m-n-r-img" src="images/text-index-news3.png" alt="">&ndash;&gt;-->
+                <!--<p class="m-n-tit">朋友在澳洲，“朋友在中国”</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed4.html">-->
+                <!--<div class="m-n-r-img" style="background: url(__PUBLIC__/images/text/pic4.jpg);"></div>&lt;!&ndash;<img  src="images/text/pic4.jpg" alt="">&ndash;&gt;-->
+                <!--<p class="m-n-tit">时间证明能力，能力基于实践</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed10.html">-->
+                <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic10.jpg"></div>-->
+                <!--&lt;!&ndash;<img class="m-n-r-img" src="images/text-index-news6.png" alt="">&ndash;&gt;-->
+                <!--<p class="m-n-tit">来，我们做个交换</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed1.html">-->
+                <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic1.jpg"></div>-->
 
-                <p class="m-n-tit">小小少年的奇幻之旅</p>
-            </a>
+                <!--<p class="m-n-tit">小小少年的奇幻之旅</p>-->
+            <!--</a>-->
 
-            <a class="m-n-row" href="../Static/consulting-detailed3.html">
-                <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic3.jpg"></div>
-                <!--<img class="m-n-r-img" src="images/text-index-news7.png" alt="">-->
-                <p class="m-n-tit">实现自己的弹性空间</p>
-            </a>
-            <a class="m-n-row" href="../Static/consulting-detailed2.html">
-                <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left: -20px;" src="__PUBLIC__/images/text/pic2.jpg"></div>
-                <p class="m-n-tit">漫步理想人生路，谨记纯真初心梦</p>
-            </a>
-            <a class="m-n-row" href="../Static/consulting-detailed6.html">
-                <div class="m-n-r-img"><img style="height: auto;width:100%;position: absolute;left:0px;" src="__PUBLIC__/images/text/pic6.jpg"></div>
-                <!--<img class="m-n-r-img" src="images/text-index-news8.png" alt="">-->
-                <p class="m-n-tit">与白鸽共同起舞的日子</p>
-            </a>
-
-
-            <a class="m-n-row" href="../Static/consulting-detailed8.html">
-                <div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic8.jpg"></div>
-                <!--<img class="m-n-r-img" src="images/text-index-news10.png" alt="">-->
-                <p class="m-n-tit">剑桥，我轻轻地来了</p>
-            </a>
+            <!--<a class="m-n-row" href="../Static/consulting-detailed3.html">-->
+                <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic3.jpg"></div>-->
+                <!--&lt;!&ndash;<img class="m-n-r-img" src="images/text-index-news7.png" alt="">&ndash;&gt;-->
+                <!--<p class="m-n-tit">实现自己的弹性空间</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed2.html">-->
+                <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left: -20px;" src="__PUBLIC__/images/text/pic2.jpg"></div>-->
+                <!--<p class="m-n-tit">漫步理想人生路，谨记纯真初心梦</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed6.html">-->
+                <!--<div class="m-n-r-img"><img style="height: auto;width:100%;position: absolute;left:0px;" src="__PUBLIC__/images/text/pic6.jpg"></div>-->
+                <!--&lt;!&ndash;<img class="m-n-r-img" src="images/text-index-news8.png" alt="">&ndash;&gt;-->
+                <!--<p class="m-n-tit">与白鸽共同起舞的日子</p>-->
+            <!--</a>-->
+            <!--<a class="m-n-row" href="../Static/consulting-detailed8.html">-->
+                <!--<div class="m-n-r-img"><img style="height: 100%;width:auto;position: absolute;left:-60px;" src="__PUBLIC__/images/text/pic8.jpg"></div>-->
+                <!--&lt;!&ndash;<img class="m-n-r-img" src="images/text-index-news10.png" alt="">&ndash;&gt;-->
+                <!--<p class="m-n-tit">剑桥，我轻轻地来了</p>-->
+            <!--</a>-->
         </div>
     </article>
     <!--include footer.html-->

@@ -101,4 +101,21 @@ return array(
     'SPECIAL_NAME' => 'specials',
     'BOOST_NAME' => 'bg_boost',
     'TOUR_NAME' => 'tour_study',
+    'CATE_CELEB' => 'counselling',
+
+
+    'PAGE_CONF' => array(
+        'prev'   => '上一页',
+        'next'   => '下一页',
+        'theme'  => '%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%',
+        'frontclass' => array(
+            'div' => 'm-page',
+            'prev' => 'm-p-prev',
+            'next' => 'm-p-next',
+            'select' => 'm-p-num m-p-select',
+            'num' => 'm-p-num',
+        ),
+    ),
+    'CONSULT_PAGEROWS' => 4,
+    'PROJECT_PAGEROWS' => 12,
 );

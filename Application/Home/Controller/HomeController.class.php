@@ -38,4 +38,61 @@ class HomeController extends Controller {
 		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
 	}
 
+
+    /*分页*/
+    protected function frontPage($model, $page_conf, $list_row=10, $where=array(),$order='', $base = array('status'=>array('egt',0)),$field=true){
+        $options    =   array();
+        $REQUEST    =   (array)I('request.');
+        if(is_string($model)){
+            $model  =   M($model);
+        }
+
+        $OPT        =   new \ReflectionProperty($model,'options');
+        $OPT->setAccessible(true);
+
+        $pk         =   $model->getPk();
+        if($order===null){
+            //order置空
+        }else if ( isset($REQUEST['_order']) && isset($REQUEST['_field']) && in_array(strtolower($REQUEST['_order']),array('desc','asc')) ) {
+            $options['order'] = '`'.$REQUEST['_field'].'` '.$REQUEST['_order'];
+        }elseif( $order==='' && empty($options['order']) && !empty($pk) ){
+            $options['order'] = $pk.' desc';
+        }elseif($order){
+            $options['order'] = $order;
+        }
+        unset($REQUEST['_order'],$REQUEST['_field']);
+
+        $options['where'] = array_filter(array_merge( (array)$base, /*$REQUEST,*/ (array)$where ),function($val){
+            if($val===''||$val===null){
+                return false;
+            }else{
+                return true;
+            }
+        });
+        if( empty($options['where'])){
+            unset($options['where']);
+        }
+        $options      =   array_merge( (array)$OPT->getValue($model), $options );
+        $total        =   $model->where($options['where'])->count();
+
+        if( isset($REQUEST['r']) ){
+            $listRows = (int)$REQUEST['r'];
+        }else{
+            $listRows = $list_row > 0 ? $list_row : 10;
+        }
+        $page = new \Think\Page($total, $listRows, $REQUEST);
+        if($total>$listRows){
+            $page->setConfigAll($page_conf);
+        }
+
+        $p =$page->frontShow();
+        $this->assign('_page', $p? $p: '');
+        $this->assign('_total',$total);
+        $options['limit'] = $page->firstRow.','.$page->listRows;
+
+        $model->setProperty('options',$options);
+
+        return $model->field($field)->select();
+    }
+
 }

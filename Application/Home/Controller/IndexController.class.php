@@ -47,13 +47,17 @@ class IndexController extends HomeController {
                     break;
             }
         }
-var_dump($special);
+
+        //达人资讯
+        $celeb_id = M('Category')->where(['name' => C('CATE_CELEB')])->field('id')->find()['id'];
+        $conselling = D('Document')->lists($celeb_id, "`level` desc", 10);
+
+//        var_dump($conselling);
         $this->assign('slide',$slide_info);//轮播
         $this->assign('special',$special);//轮播
         $this->assign('boost',$boost);//轮播
         $this->assign('tour',$tour);//轮播
-        //$this->assign('category',$category);//栏目
-        //$this->assign('lists',$lists);//列表
+        $this->assign('conselling',$conselling);//轮播
         $this->assign('page',D('Document')->page);//分页
 
 

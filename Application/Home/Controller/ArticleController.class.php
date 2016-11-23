@@ -46,6 +46,75 @@ class ArticleController extends HomeController {
 		$this->display($category['template_lists']);
 	}
 
+	public function listConsult()
+    {
+        $celeb_id = M('Category')->where(['name' => C('CATE_CELEB')])->field('id')->find()['id'];
+
+        $map['status'] = array('eq', 1);
+        $map['category_id'] = array('eq', $celeb_id);
+
+        $page_list = $this->frontPage('document', C('PAGE_CONF'), C('CONSULT_PAGEROWS'), $map, "`level` desc");
+
+        foreach ($page_list as $k => $v)
+        {
+            $page_list[$k]['cover_path'] = get_cover($v['cover_id'], 'path');
+        }
+
+        $this->assign("list", $page_list);
+        $this->display('consulting');
+    }
+
+
+    public function projLevelOne()
+    {
+        $special = [];
+        $boost = [];
+        $tour_cate = [];
+
+        //项目介绍
+        $proj_id = M('Category')->where(['name' => C('PROJ_INTRO')])->field('id')->find()['id'];
+        $category = D('Category')->getTree($proj_id);
+        foreach ($category["_"] as $cate)
+        {
+            switch ($cate['name'])
+            {
+                case C('SPECIAL_NAME'):
+                    //特殊项目
+                    $special = D('Document')->lists($cate['id'], "`level` desc", 3);
+                    break;
+                case C('BOOST_NAME'):
+                    //背景提升
+                    $boost = D('Document')->lists($cate['id'], "`level` desc", 3);
+                    break;
+                case C('TOUR_NAME'):
+                    //游学分类
+                    $tour_cate = $cate['_'];
+                    foreach ($tour_cate as $k => $c)
+                    {
+                        $tour_cate[$k] = get_cover($c['icon'], 'path');
+                    }
+                    break;
+            }
+        }
+
+        $this->assign('special',$special);//轮播
+        $this->assign('boost',$boost);//轮播
+        $this->assign('tour_cate',$tour_cate);//轮播
+
+        $this->display('project');
+    }
+
+    public function showIntroPage()
+    {
+        $name = I('get.name');
+
+//        $name = preg_replace("/_html$/", ".html", $name);
+
+        $tpl_name = C('__S_PAGE__') . '/' . $name . '.html';
+
+        $this->display($tpl_name);
+    }
+
 	/* 文档模型详情页 */
 	public function detail($id = 0, $p = 1){
 		/* 标识正确性检测 */
