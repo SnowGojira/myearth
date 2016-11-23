@@ -56,7 +56,16 @@ class DocumentModel extends Model{
 	 * @return array              文档列表
 	 */
 	public function lists($category, $order = '`id` DESC', $limit=null, $status = 1, $field = true){
-		$map = $this->listMap($category, $status);
+//		$map = $this->listMap($category, $status);  //此方法有截止时间判断
+        if(!is_null($category)){
+            if(is_numeric($category)){
+                $map['category_id'] = $category;
+            } else {
+                $map['category_id'] = array('in', str2arr($category));
+            }
+        }
+
+        $map['status'] = array('eq', $status);
 
         if (empty($limit))
 		    $ret = $this->field($field)->where($map)->order($order)->select();

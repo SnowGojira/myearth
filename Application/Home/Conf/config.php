@@ -98,9 +98,9 @@ return array(
     ), //附件上传配置（文件上传类配置）
 
     'PROJ_INTRO' => 'proj_introduction',
-    'SPECIAL_NAME' => 'specials',
-    'BOOST_NAME' => 'bg_boost',
-    'TOUR_NAME' => 'tour_study',
+    'SPECIAL_NAME' => 'Special Project',
+    'BOOST_NAME' => 'Promotion Project',
+    'TOUR_NAME' => 'Study Tour Project',
     'CATE_CELEB' => 'counselling',
 
 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-EN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>项目介绍|Talent consulting</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/public.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/project.css">
+    <!--[if lt IE 9]>
+    <script>(function(){if (!/*@cc_on!@*/0) return;var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');var i= e.length;while (i--){document.createElement(e[i])}})()</script>
+    <![endif]-->
+</head>
+<body>
+<div class="wrap">
+    <!--include header.html-->
+    <header id="header" class="header">
+        <div class="h-wrap">
+            <a class="h-log" href=""></a>
+            <nav class="h-nav">
+                <a class="h-b-a" href="{:U('Index/index')}">首页</a>
+                <a class="h-b-a" href="{:U('Article/projLevelOne')}">项目介绍</a>
+                <a class="h-b-a" href="{:U('Article/listConsult')}">达人资讯</a>
+                <a class="h-b-a" href="{:U('Article/showStaticPage', 'name=community')}">迈尔斯社群</a>
+                <a class="h-b-a" href="{:U('Article/showStaticPage', 'name=about')}">关于我们</a>
+                <a class="h-b-a" href="{:U('Article/showStaticPage', 'name=contact')}">联系我们</a>
+            </nav>
+        </div>
+    </header>
+    <article class="banner">
+        <img class="b-img" src="__PUBLIC__/images/project-banner.png" alt="">
+    </article>
+    <section class="main clearfix">
+        <article class="m-special">
+            <hgroup class="m-title m-title2">
+                <h1 class="m-t-zh">{$category['title']}</h1>
+                <h2 class="m-t-en">{$category['name']}</h2>
+            </hgroup>
+            <ul class="m-cont clearfix">
+                <volist name="list" id="vo">
+                    <li class="m-c-row">
+                        <a class="m-c-r-img" href="{:U('Article/detail', 'id='.$vo['id'])}"><img class="m-c-r-img" src="{$vo['cover_path']}" alt=""></a>
+                        <div class="m-c-r-wrap">
+                            <h5 class="m-c-r-tit">{$vo['title']}</h5>
+                            <p class="m-c-r-info">{$vo['subtitle']}</p>
+                        </div>
+                    </li>
+                </volist>
+                <!--<li class="m-c-row">-->
+                <!--<a class="m-c-r-img" href="../Static/project-e1.html"><img class="m-c-r-img" src="__PUBLIC__/images/project/e1.jpg" alt=""></a>-->
+                <!--<div class="m-c-r-wrap">-->
+                    <!--<h5 class="m-c-r-tit">不忘初心，方得始终</h5>-->
+                    <!--<p class="m-c-r-info">特色项目说明</p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="m-c-row">-->
+                    <!--<a class="m-c-r-img" href="../Static/project-sdetailed1.html"><img class="m-c-r-img" src="__PUBLIC__/images/project/special1.jpg" alt=""></a>-->
+                    <!--<div class="m-c-r-wrap">-->
+                        <!--<h5 class="m-c-r-tit">Go Campus美国奖学金计划</h5>-->
+                        <!--<p class="m-c-r-info">圆你超级美国梦，开启留学新时代</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="m-c-row">-->
+                    <!--<a class="m-c-r-img" href="../Static/project-sdetailed2.html"><img class="m-c-r-img" src="__PUBLIC__/images/project/special2.jpg" alt=""></a>-->
+                    <!--<div class="m-c-r-wrap">-->
+                        <!--<h5 class="m-c-r-tit">新西兰青年人才计划</h5>-->
+                        <!--<p class="m-c-r-info">留学就业一体化，创造留学新篇章</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+
+            <!--翻页逻辑-->
+            {$_page}
+            <!--<div class="m-page">-->
+                <!--&lt;!&ndash; class[m-p-disable:禁用] [m-p-select:当前页面] 每一页4*3 12项&ndash;&gt;-->
+                <!--<a class="m-p-prev m-p-disable" href="">上一页</a>-->
+                <!--<a class="m-p-num m-p-select" href="">1</a>-->
+                <!--&lt;!&ndash;<a class="m-p-num" href="">2</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a class="m-p-num" href="">3</a>&ndash;&gt;-->
+                <!--<a class="m-p-next m-p-disable" href="">下一页</a>-->
+            <!--</div>-->
+        </article>
+    </section>
+    <!--include footer.html-->
+    <footer class="footer">
+        <div class="f-link">
+            <a class="f-l-wx f-l-icon" href=""></a>
+            <a class="f-l-wb f-l-icon" href=""></a>
+            <a class="f-l-f f-l-icon" href=""></a>
+            <a class="f-l-fx f-l-icon" href=""></a>
+            <a class="f-l-in f-l-icon" href=""></a>
+            <a class="f-l-g f-l-icon" href=""></a>
+        </div>
+        <article class="f-bom">
+            <h2 class="f-m-tit">迈尔斯国际教育</h2>
+            <p class="f-m-tel">028-85963901</p>
+            <p class="f-m-p">
+                <span class="f-m-adds">地址：成都市高新区盛安街133号汇锦广场A座11层</span>
+                <span class="f-m-website">网址：www.my-earth.cn</span>
+            </p>
+            <p class="f-m-copy">Copyright © 2015迈尔斯 沪ICP备10011451号-6</p>
+        </article>
+
+    </footer>
+</div>
+</body>
+</html>

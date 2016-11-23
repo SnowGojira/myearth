@@ -18,12 +18,12 @@
             <div class="h-wrap">
                 <a class="h-log" href=""></a>
                 <nav class="h-nav">
-                    <a class="h-b-a" href="../Index/index.html">首页</a>
-                    <a class="h-b-a" href="../Article/project.html">项目介绍</a>
-                    <a class="h-b-a" href="../Article/consulting.html">达人资讯</a>
-                    <a class="h-b-a" href="community.html">迈尔斯社群</a>
-                    <a class="h-b-a" href="about.html">关于我们</a>
-                    <a class="h-b-a" href="contact.html">联系我们</a>
+                    <a class="h-b-a" href="{:U('Index/index')}">首页</a>
+                    <a class="h-b-a" href="{:U('Article/projLevelOne')}">项目介绍</a>
+                    <a class="h-b-a" href="{:U('Article/listConsult')}">达人资讯</a>
+                    <a class="h-b-a" href="{:U('Article/showStaticPage', 'name=community')}">迈尔斯社群</a>
+                    <a class="h-b-a" href="{:U('Article/showStaticPage', 'name=about')}">关于我们</a>
+                    <a class="h-b-a" href="{:U('Article/showStaticPage', 'name=contact')}">联系我们</a>
                 </nav>
             </div>
         </header>
@@ -36,7 +36,7 @@
                     <h2 class="m-t-en">ONLINE MESSAGE</h2>
                     <h1 class="m-t-zh">留言/咨询</h1>
                 </hgroup>
-                <form class="m-m-form " action="" method="">
+                <form class="m-m-form " action="{:U('Contact/recv')}" method="post">
                     <p class="m-m-f-name m-m-f-row"><input class="m-m-f-in in" type="text" name="name"><span class="m-m-f-ft ft">姓名</span></p>
                     <p class="m-m-f-tel m-m-f-row"><input class="m-m-f-in in" type="text" name="tel"><span class="m-m-f-ft ft">电话</span></p>
                     <p class="m-m-f-mail m-m-f-row"><input class="m-m-f-in in" type="text" name="mail"><span class="m-m-f-ft ft">邮箱</span></p>

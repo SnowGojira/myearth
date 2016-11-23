@@ -91,20 +91,47 @@ class ArticleController extends HomeController {
                     $tour_cate = $cate['_'];
                     foreach ($tour_cate as $k => $c)
                     {
-                        $tour_cate[$k] = get_cover($c['icon'], 'path');
+                        $tour_cate[$k]['cover_path'] = get_cover($c['icon'], 'path');
                     }
                     break;
             }
         }
 
-        $this->assign('special',$special);//轮播
-        $this->assign('boost',$boost);//轮播
+        $this->assign('special',$special);//
+        $this->assign('boost',$boost);//
         $this->assign('tour_cate',$tour_cate);//轮播
 
         $this->display('project');
     }
 
-    public function showIntroPage()
+
+    public function projLevelTwo()
+    {
+        $cate_id = I('get.cate_id');
+
+        if (empty($cate_id))
+        {
+            $this->error('分类信息错误');
+        }
+
+        $category = $this->category($cate_id);
+
+        $map['status'] = array('eq', 1);
+        $map['category_id'] = array('eq', $cate_id);
+
+        $page_list = $this->frontPage('document', C('PAGE_CONF'), C('PROJECT_PAGEROWS'), $map, "`level` desc");
+
+        foreach ($page_list as $k => $v)
+        {
+            $page_list[$k]['cover_path'] = get_cover($v['cover_id'], 'path');
+        }
+
+        $this->assign("list", $page_list);
+        $this->assign("category", $category);
+        $this->display('project-slist');
+    }
+
+    public function showStaticPage()
     {
         $name = I('get.name');
 

@@ -1,0 +1,87 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title">
+        <h2>查看留言详情</h2>
+    </div>
+    <div class="tab-wrap">
+        <!--<ul class="tab-nav nav">
+            <li data-tab="tab1" class="current"><a href="javascript:void(0);">基 础</a></li>
+            <li data-tab="tab2"><a href="javascript:void(0);">高 级</a></li>
+        </ul>-->
+        <div class="tab-content">
+            <div class="form-item">
+                <label class="item-label">
+                    姓名
+                </label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="{$info.name|default=''}" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="item-label">
+                    电话
+                </label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="{$info.tel|default=''}" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="item-label">
+                    邮箱
+                </label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="{$info.mail|default=''}" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="item-label">
+                    内容
+                </label>
+                <div class="controls">
+                    <textarea style="height: 130px;" class="textarea input-large" disabled="disabled">{$info.info|default=''}</textarea>
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="item-label">
+                    时间
+                </label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="{$info.name|time_format}"  disabled="disabled">
+                </div>
+            </div>
+
+
+            <div class="form-item">
+                <!--<input type="hidden" name="id" value="{$info.id|default=''}">-->
+                <!--<button type="submit" id="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>-->
+                <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        <present name="info.id">
+                Think.setValue("allow_publish", {$info.allow_publish|default=1});
+        Think.setValue("check", {$info.check|default=0});
+        Think.setValue("model[]", {$info.model|json_encode} || [1]);
+        Think.setValue("model_sub[]", {$info.model_sub|json_encode} || [1]);
+        Think.setValue("type[]", {$info.type|json_encode} || [2]);
+        Think.setValue("display", {$info.display|default=1});
+        Think.setValue("reply", {$info.reply|default=0});
+        Think.setValue("reply_model[]", {$info.reply_model|json_encode} || [1]);
+        </present>
+        $(function(){
+            showTab();
+            $("input[name=reply]").change(function(){
+                var $reply = $(".form-item.reply");
+                parseInt(this.value) ? $reply.show() : $reply.hide();
+            }).filter(":checked").change();
+        });
+        //导航高亮
+        highlight_subnav('{:U('Slide/index')}');
+    </script>
+</block>
