@@ -29,6 +29,8 @@ class UserController extends AdminController {
             $map['nickname']    =   array('like', '%'.(string)$nickname.'%');
         }
 
+        Cookie("__forward__", $_SERVER['REQUEST_URI']);
+
         $list   = $this->lists('Member', $map);
         int_to_string($list);
         $this->assign('_list', $list);
@@ -247,6 +249,39 @@ class UserController extends AdminController {
             default:  $error = '未知错误';
         }
         return $error;
+    }
+
+    public function edit()
+    {
+        $uid = I("get.uid");
+
+        if (IS_POST)
+        {
+//            var_dump($_POST);
+//            die;
+            if (false === M('ucenter_member')->create())
+            {
+                $this->error("编辑失败");
+            }
+
+            if (M('ucenter_member')->save() !== false)
+            {
+                $this->success('编辑成功！', Cookie('__forward__'));
+            }
+            else
+            {
+                die;
+                $this->error("编辑失败");
+            }
+        }
+        else
+        {
+            $info = M('ucenter_member')->where(['id'=> $uid])->field(true)->find();
+
+            $this->assign("uid", $info['id']);
+            $this->assign("info", $info);
+            $this->display();
+        }
     }
 
 }

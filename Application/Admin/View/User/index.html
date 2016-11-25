@@ -29,7 +29,7 @@
 		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
 		<th class="">UID</th>
 		<th class="">昵称</th>
-		<th class="">积分</th>
+		<!--<th class="">积分</th>-->
 		<th class="">登录次数</th>
 		<th class="">最后登录时间</th>
 		<th class="">最后登录IP</th>
@@ -44,7 +44,7 @@
             <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
 			<td>{$vo.uid} </td>
 			<td>{$vo.nickname}</td>
-			<td>{$vo.score}</td>
+			<!--<td>{$vo.score}</td>-->
 			<td>{$vo.login}</td>
 			<td><span>{$vo.last_login_time|time_format}</span></td>
 			<td><span>{:long2ip($vo['last_login_ip'])}</span></td>
@@ -54,7 +54,10 @@
 				<else/>
 				<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
 				</eq>
-				<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
+				<eq name="vo['uid']" value="1">
+					<a href="{:U('User/edit?uid='.$vo['uid'])}">编辑</a>
+				</eq>
+				<a href="{:U('User/changeStatus?method=deleteUser&id='.$vo['uid'])}" class="confirm ajax-get">删除</a>
                 </td>
 		</tr>
 		</volist>

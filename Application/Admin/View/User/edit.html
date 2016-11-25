@@ -1,0 +1,60 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>编辑信息</h2>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">用户名<span class="check-tips">（用户名会作为默认的昵称）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" value="{$info.username}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">电话号码</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="mobile" value="{$info.mobile}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">邮箱</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$info.email}">
+            </div>
+        </div>
+        <equal name="uid" value="1">
+            <div class="form-item">
+                <label class="item-label">smtp服务器<span class="check-tips">（用于自动发送邮件，smtp服务器地址,最好选择企业邮箱[如：smtp.exmail.qq.com，腾讯企业邮箱]，普通邮箱可能发送失败或者判断为垃圾邮件）</span></label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="smtp_server" value="{$info.smtp_server}">
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="item-label">smtp邮箱用户名<span class="check-tips">（用于自动发送邮件，邮箱地址）</span></label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="smtp_user" value="{$info.smtp_user}">
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="item-label">smtp邮箱密码<span class="check-tips">（用于自动发送邮件，邮箱密码）</span></label>
+                <div class="controls">
+                    <input type="password" class="text input-large" name="smtp_pwd" value="{$info.smtp_pwd}">
+                </div>
+            </div>
+        </equal>
+
+        <div class="form-item">
+            <input type="hidden" name="id" value="{$uid}">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('User/index')}');
+    </script>
+</block>
