@@ -1,3 +1,4 @@
 /.idea/
 /Uploads/
 /Runtime/
+**/config.php
