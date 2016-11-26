@@ -19,7 +19,12 @@ class ContactController extends HomeController
 
     public function recv()
     {
-        if (empty(I('post.name')) || empty(I('post.tel')) || empty(I('post.mail')) || empty(I('post.info')))
+        $name = I('post.name');
+        $tel = I('post.tel');
+        $mail = I('post.mail');
+        $info = I('post.info');
+
+        if (empty($name) || empty($tel) || empty($mail) || empty($info))
         {
             $this->error("请完善信息");
         }
@@ -30,7 +35,7 @@ class ContactController extends HomeController
         D('Contact')->create();
         $ret = D('Contact')->add();
 
-        $stat = $this->sendMail2Admin(I('post.name'), I('post.tel'), I('post.mail'), I('post.info'));
+        $stat = $this->sendMail2Admin($name, $tel, $mail, $info);
 
         if (empty($stat))
         {
