@@ -90,8 +90,9 @@ class SlideModel extends Model{
         $ret = [];
 
         $map['status'] = ['eq', 1];
+        $order = "`level` desc, `id` desc";
 
-        if (null === ($infos = $this->where($map)->field('id, entity_id, cover_id, title_pic_id, title')->select()))
+        if (null === ($infos = $this->where($map)->order($order)->field(true)->select()))
         {
             return false;
         }
@@ -99,7 +100,12 @@ class SlideModel extends Model{
         foreach ($infos as $info)
         {
             //组装url
-            if (empty($info['entity_id']))
+            if (!empty($info['isStatic']))
+            {
+                $static_url = substr($info['staticName'], 0, -5);
+                $tmp['page_url'] = U('Article/showStaticPage', "name=$static_url");
+            }
+            else if (empty($info['entity_id']))
             {
                 $tmp['page_url'] = "#";
             }

@@ -36,7 +36,7 @@
                     <a href="{$vo['page_url']}"><img class="bi-c-img" src="{$vo['pic_url']}" alt=""><\a>
                     <div class="bi-c-tit">
                         <img class="bi-c-imgFt" src="{$vo['title_pic_url']}" alt="">
-                        <a class="bi-c-btn m-btn" href="{$vo['page_url']}"></a>
+                        <!--<a class="bi-c-btn m-btn" href="{$vo['page_url']}"></a>-->
                     </div>
                 </li>
             </volist>
@@ -200,7 +200,7 @@
                 <div class="m-p-bg">
                     <h3 class="m-p-tit">背景提升</h3>
                     <ul class="m-p-cont">
-                        <volist name="special"  id="vol2">
+                        <volist name="boost"  id="vol2">
                             <li class="m-p-row">
                                 <a class="m-p-r-img" href="{:U('Article/detail', 'id='.$vol2['id'])}"><img class="m-p-r-img" src="{$vol2['cover_path']}" alt=""></a>
                                 <div class="m-p-r-text">

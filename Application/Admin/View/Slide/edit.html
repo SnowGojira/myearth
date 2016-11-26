@@ -23,14 +23,22 @@
 						<input type="text" name="title" class="text input-large" value="{$info.title|default=''}">
 					</div>
 				</div>
-				<!--<div class="form-item">-->
-					<!--<label class="item-label">-->
-						<!--连接<span class="check-tips"></span>-->
-					<!--</label>-->
-					<!--<div class="controls">-->
-						<!--<input type="text" name="url" class="text input-large" value="{$info.url|default=''}">-->
-					<!--</div>-->
-				<!--</div>-->
+				<div class="form-item">
+					<label class="item-label">
+						是否静态页面<span class="check-tips">（重要，0--非静态，1--静态）</span>
+					</label>
+					<div class="controls">
+						<input type="text" name="isStatic" class="text input-large" value="{$info.isStatic|default='0'}">
+					</div>
+				</div>
+				<div class="form-item">
+					<label class="item-label">
+						静态页面路径<span class="check-tips">(重要，用于没有纳入后台统一管理的静态页面，包括后缀)</span>
+					</label>
+					<div class="controls">
+						<input type="text" name="staticName" class="text input-large" value="{$info.staticName|default=''}">
+					</div>
+				</div>
 				<!--<div class="form-item">-->
 					<!--<label class="item-label">所属类别</label>-->
 					<!--<div class="controls">-->
@@ -61,11 +69,19 @@
 					<!--</div>-->
 				<!--</div>-->
 				<div class="form-item">
-					<label class="item-label">文章id<span class="check-tips">（文章、活动和商品展示列表中id栏的数字）</span></label>
+					<label class="item-label">文章id<span class="check-tips">（纳入后台统一管理的文章的id，可以在文章列表查看, 0--无效，设置了静态页面则无效）</span></label>
 					<div class="controls">
-						<input type="text" name="entity_id" class="text input-large" value="{$info.entity_id|default=''}">
+						<input type="text" name="entity_id" class="text input-large" value="{$info.entity_id|default='0'}">
 					</div>
 				</div>
+                <div class="form-item">
+                    <label class="item-label">
+                        排序值<span class="check-tips">(值越大，越靠前，写正数)</span>
+                    </label>
+                    <div class="controls">
+                        <input type="text" name="level" class="text input-large" value="{$info.level|default='1'}">
+                    </div>
+                </div>
 				<div class="controls">
 					<label class="item-label">轮播图片（双击删除）</label>
 					<input type="file" id="upload_picture">
