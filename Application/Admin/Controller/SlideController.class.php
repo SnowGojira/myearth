@@ -71,15 +71,9 @@ class SlideController extends AdminController
             }
         } else {
 
-            $cate_shop_name = C('MARKET_CATE_TAG');
-            $pid = M('Category')->where(array('name' => $cate_shop_name))->field('id')->find()['id'];
-            $shop_info = M('Category')->where(array('pid' => $pid, 'status' => 1))->field('id, title')->select();
-
             /* 获取分类信息 */
             $info = $id ? $slide->info($id) : '';
-
             $this->assign('info',       $info);
-            $this->assign('shop_info',       $shop_info);
             $this->meta_title = '编辑幻灯片';
             $this->display();
         }
@@ -105,13 +99,13 @@ class SlideController extends AdminController
         }
         else
         {
-            $cate_shop_name = C('MARKET_CATE_TAG');
-            $pid = M('Category')->where(array('name' => $cate_shop_name))->field('id')->find()['id'];
-            $shop_info = M('Category')->where(array('pid' => $pid, 'status' => 1))->field('id, title')->select();
+//            $cate_shop_name = C('MARKET_CATE_TAG');
+//            $pid = M('Category')->where(array('name' => $cate_shop_name))->field('id')->find()['id'];
+//            $shop_info = M('Category')->where(array('pid' => $pid, 'status' => 1))->field('id, title')->select();
 
             /* 获取优惠券信息 */
-            $this->assign('info', null);
-            $this->assign('shop_info',       $shop_info);
+//            $this->assign('info', null);
+//            $this->assign('shop_info',       $shop_info);
             $this->meta_title = '新增幻灯片';
             $this->display('edit');
         }

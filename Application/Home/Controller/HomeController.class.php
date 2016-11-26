@@ -81,13 +81,16 @@ class HomeController extends Controller {
             $listRows = $list_row > 0 ? $list_row : 10;
         }
         $page = new \Think\Page($total, $listRows, $REQUEST);
-        if($total>$listRows){
-            $page->setConfigAll($page_conf);
-        }
+//        if($total>$listRows){
+//            $page->setConfigAll($page_conf);
+//        }
+        $page->setConfigAll($page_conf);
 
         $p =$page->frontShow();
-        $this->assign('_page', $p? $p: '');
-        $this->assign('_total',$total);
+        if($total>$listRows){
+            $this->assign('_page', $p? $p: '');
+            $this->assign('_total',$total);
+        }
         $options['limit'] = $page->firstRow.','.$page->listRows;
 
         $model->setProperty('options',$options);
